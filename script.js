@@ -60,11 +60,17 @@
       else if (value == "DEL") {
         if (lastType != "number") { return }
         if (currentNum.length <= 1) {
-        currentNum = "0"
+        currentNum = ""
         screen.textContent = "0"
         return
         }
         currentNum = currentNum.slice(0, -1)
+        screen.textContent = currentNum
+        return
+      }
+      else if (value == ".") {
+        if (lastType != "number") { return }
+        currentNum += value
         screen.textContent = currentNum
         return
       }
