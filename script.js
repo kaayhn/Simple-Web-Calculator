@@ -12,24 +12,21 @@
     const numbers = [1,2,3,4,5,6,7,8,9,0]
     const ops = ["+", "-", "×", "÷"]
 
+
     function add(one, two) {
-      //screen.textContent = `${one + two}`
       return one + two
-      
     }
     function mult(one, two) {
-      //screen.textContent = `${one * two}`
       return one * two
     }
     function div(one, two) {
-      //screen.textContent = `${one / two}`
       return one / two
     }
     function sub(one, two) {
-      //screen.textContent = `${one - two}`
       return one - two
     }
     
+    //switch to appropriate operation function
     function operation(op, one, two) {
       switch (op) {
         case "+":
@@ -50,12 +47,12 @@
 
 
 
-
+    //main logic
     main.addEventListener("click", (e) => {
 
       const value = e.target.textContent
 
-      // determine type
+      // determine type of button just pressed
       if (numbers.includes(Number(value))) {currentType = "number"}
       else if (ops.includes(value)) { currentType = "operator" }
       else if (value === "=") { currentType = "equals" }
@@ -70,8 +67,6 @@
         screen.textContent = currentNum
         return
        }
-      
-
       else { return }
 
 
@@ -88,6 +83,11 @@
 
 
       else if (currentType == "operator") {
+        if (lastType == "operator") { 
+            currentOperator = value 
+            lastType = currentType
+            return
+        }
         if (currentNum == "") { return }
 
         if (storedNum != undefined) {
