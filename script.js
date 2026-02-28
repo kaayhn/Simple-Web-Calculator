@@ -57,16 +57,19 @@
       else if (ops.includes(value)) { currentType = "operator" }
       else if (value === "=") { currentType = "equals" }
       else if (value === "AC") { currentType = "AC" }
-      else if (value === "DEL") { 
-        if(currentNum.length == 1) {
-          currentNum = ""
-          screen.textContent = "0"
-          return
+      else if (value == "DEL") {
+        if (lastType != "number") { return }
+        if (currentNum.length <= 1) {
+        currentNum = "0"
+        screen.textContent = "0"
+        return
         }
         currentNum = currentNum.slice(0, -1)
         screen.textContent = currentNum
         return
-       }
+      }
+
+
       else { return }
 
 
